@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://drjb4oig42g3f"]
+
+[ext_resource type="Texture2D" uid="uid://6rjgf61dmlkv" path="res://assets/sprites/npc.png" id="1_nh2m4"]
+[ext_resource type="Script" uid="uid://ongrje563icj" path="res://scripts/area_2d.gd" id="2_abqhh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abqhh"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv78h"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n8xq"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wlns"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl2vt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abqhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv78h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n8xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wlns")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nh2m4"]
+size = Vector2(37, 20)
+
+[node name="npc" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_tl2vt")
+autoplay = "default"
+frame = 2
+frame_progress = 0.5414023
+
+[node name="interagibleNPC" type="Area2D" parent="AnimatedSprite2D"]
+z_index = 5
+position = Vector2(0, 12)
+collision_mask = 2
+script = ExtResource("2_abqhh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/interagibleNPC"]
+position = Vector2(-0.5, -9)
+shape = SubResource("RectangleShape2D_nh2m4")
+
+[connection signal="body_entered" from="AnimatedSprite2D/interagibleNPC" to="AnimatedSprite2D/interagibleNPC" method="_on_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/interagibleNPC" to="AnimatedSprite2D/interagibleNPC" method="_on_body_exited"]
+[connection signal="input_event" from="AnimatedSprite2D/interagibleNPC" to="AnimatedSprite2D/interagibleNPC" method="_on_input_event"]
