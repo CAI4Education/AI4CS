@@ -5,7 +5,7 @@ import threading
 
 # TCP server settings
 HOST = "127.0.0.1"
-PORT = 6000   # << usa una porta diversa dal bridge dell’hacker
+PORT = 6000
 
 # SSH (root)
 SSH_HOST = "127.0.0.1"
@@ -50,7 +50,7 @@ def handle_client(conn):
                 conn.sendall(b"ERROR: Invalid format\n")
                 continue
 
-            full_cmd = f"/opt/ctf/runchallenge.sh {challenge_name}"
+            full_cmd = f"/opt/ctf/run_challenge.sh {challenge_name}"
             print(f"[root-bridge] Executing as root: {full_cmd}")
 
             try:

@@ -10,22 +10,22 @@ var terminal2: TerminalSession
 # Socket per ROOT
 var root_socket := StreamPeerTCP.new()
 var root_connected := false
-var pending_challenge := ""
+var pending_challenge := "challenge2"
 
 func _ready():
-	# --- TERMINALE 1 ---
+	#------ TERMINALE 1 -----
 	terminal1 = TerminalSession.new()
 	terminal1.setup(editor_main)
 	terminal1.connect_to("127.0.0.1", 5000)
 
-	# --- TERMINALE 2 ---
+	#--- II TERMINALE ------
 	terminal2 = TerminalSession.new()
 	terminal2.setup(editor_secondary)
 	editor_secondary.visible = false
 	terminal2.connect_to("127.0.0.1", 5000)
 
-	# --- CONNESSIONE ROOT ---
-	_connect_root_bridge("challenge1")
+	#------- CONNESSIONE ROOT - dove inviare la challenge -------
+	_connect_root_bridge()
 
 	set_process(true)
 
@@ -34,14 +34,16 @@ func _process(delta):
 	terminal1.process(delta)
 	terminal2.process(delta)
 
+	root_socket.poll()
 	# Gestione della connessione ROOT
 	if root_socket.get_status() == StreamPeerTCP.STATUS_CONNECTED:
 		if not root_connected:
+			print("qui")
 			root_connected = true
-			# Ora è sicuro inviare la challenge
+			await get_tree().process_frame
 			_send_challenge_start(pending_challenge)
 
-	# Se root manda risposta, leggila (debug)
+	#se root manda risposta
 	if root_connected:
 		var avail = root_socket.get_available_bytes()
 		if avail > 0:
@@ -76,12 +78,10 @@ func _on_terminal_button_pressed():
 # ROOT CONNECTION
 # --------------------------------------------------
 
-func _connect_root_bridge(challenge_name:String):
-	pending_challenge = challenge_name
+func _connect_root_bridge():
 	root_socket = StreamPeerTCP.new()
 	root_connected = false
 	root_socket.connect_to_host("127.0.0.1", 6000)
-
 
 func _send_challenge_start(challenge_string:String):
 	if not root_connected:

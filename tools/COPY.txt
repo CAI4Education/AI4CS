@@ -1,1 +1,0 @@
-The tools folder is not originally from this godot's project
