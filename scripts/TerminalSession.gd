@@ -1,5 +1,4 @@
 extends RefCounted
-
 class_name TerminalSession
 
 var editor: TextEdit
@@ -8,14 +7,18 @@ var connected := false
 var input_buffer := ""
 var last_prompt := ""
 
+
 func setup(editor_node: TextEdit):
 	editor = editor_node
 	editor.editable = false
 	editor.text = ""
 	editor.grab_focus()
 
+
 func connect_to(host: String, port: int):
+	socket = StreamPeerTCP.new()
 	socket.connect_to_host(host, port)
+
 
 func process(delta):
 	socket.poll()
@@ -31,7 +34,7 @@ func process(delta):
 		if avail > 0:
 			var raw = socket.get_utf8_string(avail)
 			var cleaned = _strip_ansi(raw)
-			
+
 			var rx := RegEx.new()
 			rx.compile("([a-zA-Z0-9_]+@[a-zA-Z0-9_\\-]+:.*[#\\$]) *$")
 			var m = rx.search(cleaned)
@@ -41,8 +44,10 @@ func process(delta):
 			editor.text += "\n" + cleaned
 			_scroll()
 
+
 func handle_key(event: InputEventKey):
-	if not connected: return
+	if not connected:
+		return false
 
 	# ENTER
 	if event.keycode == KEY_ENTER and event.pressed:
@@ -76,8 +81,10 @@ func handle_key(event: InputEventKey):
 
 	return false
 
+
 func _scroll():
 	editor.scroll_vertical = editor.get_line_count()
+
 
 func _strip_ansi(t:String) -> String:
 	var rx = RegEx.new()
