@@ -3,11 +3,11 @@ extends Area2D
 var player_in_area = false
 @onready var terminal_ui = preload("res://scenes/terminal_interface.tscn").instantiate()
 
-@onready var overlay_layer := get_tree().get_root().get_node("MainScene/OverlayLayer")
+#@onready var overlay_layer := get_tree().get_root().get_node("MainScene/OverlayLayer")
 
 func _ready():
 	terminal_ui.visible = false
-	overlay_layer.call_deferred("add_child", terminal_ui)
+	#overlay_layer.call_deferred("add_child", terminal_ui)
 
 func _on_body_entered(body):
 	player_in_area = true
