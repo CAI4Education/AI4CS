@@ -1,0 +1,14 @@
+CollisionShape2D
+Hitbox
+Hurtbox
+AnimationPlayer
+Area2D
+RayCast2D
+Label
+CanvasLayer
+AnimationTree
+Sprite2D
+CharacterBody2D
+AnimatedSprite2D
+CollisionPolygon2D
+TileMapLayer

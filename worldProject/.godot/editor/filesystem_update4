@@ -1,0 +1,4 @@
+res://player/player.tscn
+res://world/cliff_tileset.tres
+res://world/dirt_tileset.tres
+res://player/player.gd
