@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://c5b0heykhv2o5"]
+[gd_scene load_steps=10 format=4 uid="uid://c5b0heykhv2o5"]
 
-[ext_resource type="PackedScene" uid="uid://bul2c31221ykk" path="res://scenes/player.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://bul2c31221ykk" path="res://scenes/world/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://ca76q5j51clfk" path="res://assets/sprites/world/grass_background.png" id="1_fj7yv"]
 [ext_resource type="TileSet" uid="uid://b1umlr3si6isc" path="res://assets/sprites/world/cliff_tileset.tres" id="2_dwbse"]
 [ext_resource type="TileSet" uid="uid://bme50400dqbvo" path="res://assets/sprites/world/dirt_tileset.tres" id="3_pkg7o"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqrugtkt5d17u" path="res://scenes/world/Tree.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://wxx3xr1xji4p" path="res://scenes/world/enemies/bat_enemy.tscn" id="4_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://l867ydsb0bpb" path="res://scenes/world/grass.tscn" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://bv61nk72x0j0c" path="res://scenes/guiStuff/menu.tscn" id="9_vuu3o"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -121,6 +122,18 @@ position = Vector2(576, 13)
 
 [node name="Tree13" parent="GroundLayer" instance=ExtResource("4_aqk2v")]
 position = Vector2(610, 13)
+
+[node name="Menu" parent="." instance=ExtResource("9_vuu3o")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 249.0
+offset_top = 21.0
+offset_right = 249.0
+offset_bottom = 21.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.435, 0.435)
 
 [node name="Player" parent="." instance=ExtResource("1_f3sb7")]
 position = Vector2(164, 91)

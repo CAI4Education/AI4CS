@@ -67,6 +67,7 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("5_vd6u3")
 placeholder_text = "Search a command"
 editable = false
+scroll_smooth = true
 
 [node name="GridContainer" type="GridContainer" parent="Grid"]
 layout_mode = 2
