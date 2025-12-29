@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dm51g8n13ca40"]
+[gd_scene load_steps=15 format=3 uid="uid://dm51g8n13ca40"]
 
+[ext_resource type="Script" uid="uid://cuac3dhc5ygid" path="res://scripts/gui/start_game_interface.gd" id="1_0vorj"]
 [ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_1jhu7"]
 [ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="1_okaa1"]
 [ext_resource type="Texture2D" uid="uid://bg4c0c8ugxs43" path="res://assets/sprites/ui/backgroundGame.png" id="1_w5qe4"]
@@ -51,10 +52,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_0vorj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(567, 316.00003)
-scale = Vector2(0.8186274, 0.8186275)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_w5qe4")
 
 [node name="baseMenu" type="HBoxContainer" parent="."]
@@ -82,7 +90,6 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.99999994, 0.188184, 0.44147515, 1)
 theme_override_fonts/font = ExtResource("1_1jhu7")
 theme_override_font_sizes/font_size = 35
-text = "RPG 2 HACK"
 
 [node name="baseMenuScreen" type="MarginContainer" parent="baseMenu/VBoxContainer"]
 layout_mode = 2
@@ -149,3 +156,6 @@ size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxTexture_0vorj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_thx44")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2771t")
+
+[connection signal="pressed" from="baseMenu/VBoxContainer/baseMenuScreen/MarginContainer/buttonContainer/topButtonContainer/startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="baseMenu/VBoxContainer/baseMenuScreen/MarginContainer/buttonContainer/lowerButtonContainer2/newGame" to="." method="_on_new_game_pressed"]
