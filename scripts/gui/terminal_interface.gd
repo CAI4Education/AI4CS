@@ -10,7 +10,7 @@ var terminal2: TerminalSession
 # Socket per ROOT
 var root_socket := StreamPeerTCP.new()
 var root_connected := false
-var pending_challenge := "challenge4"
+var pending_challenge := "challenge3"
 
 func _ready():
 	#------ TERMINALE 1 -----
