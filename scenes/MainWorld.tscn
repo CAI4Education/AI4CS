@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://61me8sii0sx3"]
+
+[ext_resource type="PackedScene" uid="uid://c5b0heykhv2o5" path="res://scenes/world/mainScene.tscn" id="1_78anr"]
+[ext_resource type="PackedScene" uid="uid://bv61nk72x0j0c" path="res://scenes/guiStuff/menu.tscn" id="2_sdt8g"]
+
+[node name="MainWorld" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("2_sdt8g")]
+visibility_layer = 3
+z_index = 2
+
+[node name="World" parent="." instance=ExtResource("1_78anr")]
