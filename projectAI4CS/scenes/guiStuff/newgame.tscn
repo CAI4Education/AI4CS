@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://2qge10hpvxxv"]
+[gd_scene load_steps=8 format=3 uid="uid://2qge10hpvxxv"]
 
 [ext_resource type="Script" uid="uid://cugf12xytbs14" path="res://scripts/gui/newgame.gd" id="1_v3wqv"]
 [ext_resource type="Texture2D" uid="uid://x7b71xbivxa8" path="res://assets/sprites/ui/backgroundGame1.png" id="2_0jlao"]
 [ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_e5d7o"]
 [ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="4_e71q2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3wqv"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(837, 157, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv77r"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(869, 159, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e5d7o"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(869, 159, 22, 22)
 
 [node name="StartGameInterface" type="Control"]
 layout_mode = 3
@@ -38,15 +50,38 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(370, 160)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(741, 31, 22, 22)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -16.0
+offset_right = 224.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.6007969, 0.40135172, 0.2860863, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_e5d7o")
 theme_override_font_sizes/font_size = 31
-text = "Choose a file where creating the new game"
+text = "Start a new game"
 
 [node name="IIsave" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -57,7 +92,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("4_e71q2")
 region_rect = Rect2(741, 31, 22, 22)
-patch_margin_left = 4
+patch_margin_left = 5
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
@@ -212,9 +247,13 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="returnButton" type="Button" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 8
-text = "backButton"
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_v3wqv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pv77r")
+theme_override_styles/hover = SubResource("StyleBoxTexture_e5d7o")
 
 [connection signal="pressed" from="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/Loadgame1" to="." method="_on_loadgame_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/CancelGgame1" to="." method="_on_cancel_ggame_1_pressed"]
