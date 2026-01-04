@@ -1,9 +1,10 @@
 extends Control
 
-@onready var editor_main = $Grid/TopRightEditor
-@onready var terminal_button = $Grid/GridContainer/TerminalButton
-@onready var editor_secondary = $Grid/GridContainer/SecondTerminal
-@onready var goBack = $Grid/MarginContainer/goBack
+@onready var editor_main = $NinePatchRect/vert/Grid/NinePatchRect2/MarginContainer/TopRightEditor
+@onready var terminal_button = $NinePatchRect/vert/Grid/NinePatchRect4/MarginContainer/GridContainer/TerminalButton
+@onready var editor_secondary = $NinePatchRect/vert/Grid/NinePatchRect4/MarginContainer/GridContainer/SecondTerminal
+#Il bottone go back deve aprire una finestra "sicuro di voler abbandonare la challenge?"
+@onready var goBack = $NinePatchRect/vert/NinePatchRect/MarginContainer/HBoxContainer/goBack
 
 var terminal1: TerminalSession
 var terminal2: TerminalSession
