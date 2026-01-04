@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6nyk2p7ni67v"]
+
+[ext_resource type="Script" uid="uid://b6w6bl30kn413" path="res://scripts/gui/terminal_interface.gd" id="1_e2q8s"]
+[ext_resource type="Texture2D" uid="uid://dptksms4co866" path="res://assets/sprites/icon.svg" id="2_yyxlr"]
+[ext_resource type="Theme" uid="uid://bcjosjn0mg65v" path="res://themes/terminalTheme.tres" id="3_3xvm2"]
+[ext_resource type="Script" uid="uid://g3qqurifaohe" path="res://scripts/gui/bottom_left_panel.gd" id="4_nnsai"]
+[ext_resource type="FontFile" uid="uid://crk5bhesu6ahf" path="res://assets/fonts/PixelOperator8.ttf" id="5_vd6u3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_e2q8s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.057982344, 0.057982344, 0.057982344, 0.50980395)
+
+[node name="Grid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopLeftImage" type="TextureRect" parent="Grid/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_yyxlr")
+stretch_mode = 5
+
+[node name="goBack" type="Button" parent="Grid/MarginContainer"]
+layout_mode = 2
+
+[node name="TopRightEditor" type="TextEdit" parent="Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_3xvm2")
+placeholder_text = "Docker terminal"
+wrap_mode = 1
+caret_type = 1
+caret_blink = true
+
+[node name="BottomLeftPanel" type="PanelContainer" parent="Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_nnsai")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Grid/BottomLeftPanel"]
+layout_mode = 2
+
+[node name="SearchBar" type="HBoxContainer" parent="Grid/BottomLeftPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="SearchInput" type="LineEdit" parent="Grid/BottomLeftPanel/VBoxContainer/SearchBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_vd6u3")
+
+[node name="ManViewer" type="TextEdit" parent="Grid/BottomLeftPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_vd6u3")
+placeholder_text = "Search a command"
+editable = false
+scroll_smooth = true
+
+[node name="GridContainer" type="GridContainer" parent="Grid"]
+layout_mode = 2
+
+[node name="TerminalButton" type="Button" parent="Grid/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Open another terminal"
+
+[node name="SecondTerminal" type="TextEdit" parent="Grid/GridContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_3xvm2")
+wrap_mode = 1
+
+[connection signal="pressed" from="Grid/MarginContainer/goBack" to="." method="_on_go_back_pressed"]
+[connection signal="pressed" from="Grid/GridContainer/TerminalButton" to="." method="_on_terminal_button_pressed"]
