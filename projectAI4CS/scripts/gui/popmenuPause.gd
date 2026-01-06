@@ -3,6 +3,7 @@ extends Control
 @onready var popmenu: MarginContainer = $popmenu
 @onready var pause_button: Button = $pauseIconButton/VBoxContainer/pauseButton
 @onready var levelLabel: Label = $popmenu/baseMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/displayLevel/levelDisplay
+@onready var settingsButton: Button =$popmenu/baseMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/buttonContainer/topButtonContainer/settingsButton
 
 func _ready():
 	# Il menu NON deve essere visibile all'avvio
@@ -42,3 +43,10 @@ func _on_save_button_pressed() -> void:
 		
 	GameState.save_game()
 	print("Gioco salvatoooo")
+
+
+func _on_settings_button_pressed() -> void:
+	#signal (guarda script settings)
+	var settings = preload("res://scenes/guiStuff/settingsScene.tscn").instantiate()
+	add_child(settings)
+	settings.connect("closed", Callable(self, "_on_settings_closed"))

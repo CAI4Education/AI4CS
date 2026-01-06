@@ -1,9 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://2qge10hpvxxv"]
+[gd_scene load_steps=13 format=3 uid="uid://2qge10hpvxxv"]
 
 [ext_resource type="Script" uid="uid://cugf12xytbs14" path="res://scripts/gui/newgame.gd" id="1_v3wqv"]
 [ext_resource type="Texture2D" uid="uid://x7b71xbivxa8" path="res://assets/sprites/ui/backgroundGame1.png" id="2_0jlao"]
 [ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_e5d7o"]
 [ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="4_e71q2"]
+[ext_resource type="AudioStream" uid="uid://b01bollqc8xog" path="res://assets/music/music.mp3" id="5_pv77r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e71q2"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(837, 29, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1247k"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(869, 31, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ygum0"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(772, 156, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yl0cq"]
+texture = ExtResource("4_e71q2")
+region_rect = Rect2(804, 158, 22, 22)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3wqv"]
 texture = ExtResource("4_e71q2")
@@ -24,15 +41,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("1_v3wqv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -728.0
+offset_top = -408.0
+offset_right = 728.0
+offset_bottom = 408.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_0jlao")
@@ -44,37 +65,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(370, 160)
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-texture = ExtResource("4_e71q2")
-region_rect = Rect2(741, 31, 22, 22)
-patch_margin_left = 5
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.5
-offset_top = -16.0
-offset_right = 224.5
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.6007969, 0.40135172, 0.2860863, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -82,6 +79,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_e5d7o")
 theme_override_font_sizes/font_size = 31
 text = "Start a new game"
+horizontal_alignment = 1
 
 [node name="IIsave" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -126,15 +124,57 @@ size_flags_horizontal = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Loadgame1" type="Button" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "load Game 1"
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="CancelGgame1" type="Button" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.4745098, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("3_e5d7o")
+text = "Load Game"
+horizontal_alignment = 1
+
+[node name="Loadgame1" type="Button" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "delete Game 1"
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_e71q2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1247k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1247k")
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.4745098, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("3_e5d7o")
+text = "Delete File"
+horizontal_alignment = 1
+
+[node name="CancelGgame1" type="Button" parent="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_ygum0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yl0cq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yl0cq")
 
 [node name="IIIsave" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -172,22 +212,64 @@ theme_override_fonts/font = ExtResource("3_e5d7o")
 theme_override_font_sizes/font_size = 21
 text = "Level:"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="Loadgame2" type="Button" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "load Game 2"
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="CancelGgame2" type="Button" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.4745098, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("3_e5d7o")
+text = "Load Game"
+horizontal_alignment = 1
+
+[node name="Loadgame2" type="Button" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "delete Game 2"
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_e71q2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1247k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1247k")
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.4745098, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("3_e5d7o")
+text = "Delete File"
+horizontal_alignment = 1
+
+[node name="CancelGgame2" type="Button" parent="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_ygum0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yl0cq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yl0cq")
 
 [node name="IVsave" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -225,22 +307,64 @@ theme_override_fonts/font = ExtResource("3_e5d7o")
 theme_override_font_sizes/font_size = 21
 text = "Level:"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="Loadgame3" type="Button" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "load Game 2"
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="CancelGgame3" type="Button" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.4745098, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("3_e5d7o")
+text = "Load Game"
+horizontal_alignment = 1
+
+[node name="Loadgame3" type="Button" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "delete Game 3"
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_e71q2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1247k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1247k")
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.4745098, 0.34901962, 1)
+theme_override_fonts/font = ExtResource("3_e5d7o")
+text = "Delete File"
+horizontal_alignment = 1
+
+[node name="CancelGgame3" type="Button" parent="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_ygum0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yl0cq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yl0cq")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -249,17 +373,21 @@ size_flags_vertical = 3
 [node name="returnButton" type="Button" parent="VBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/normal = SubResource("StyleBoxTexture_v3wqv")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pv77r")
 theme_override_styles/hover = SubResource("StyleBoxTexture_e5d7o")
 
-[connection signal="pressed" from="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/Loadgame1" to="." method="_on_loadgame_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/CancelGgame1" to="." method="_on_cancel_ggame_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/Loadgame2" to="." method="_on_loadgame_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/CancelGgame2" to="." method="_on_cancel_ggame_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer/HBoxContainer/Loadgame3" to="." method="_on_loadgame_3_pressed"]
-[connection signal="pressed" from="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer/HBoxContainer/CancelGgame3" to="." method="_on_cancel_ggame_3_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pv77r")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/Loadgame1" to="." method="_on_loadgame_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/IIsave/NinePatchRect/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer3/VBoxContainer/CancelGgame1" to="." method="_on_cancel_ggame_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer/Loadgame2" to="." method="_on_loadgame_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/IIIsave/NinePatchRect/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/CancelGgame2" to="." method="_on_cancel_ggame_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer/VBoxContainer/Loadgame3" to="." method="_on_loadgame_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/IVsave/NinePatchRect2/HBoxContainer/MarginContainer2/HBoxContainer/MarginContainer3/VBoxContainer/CancelGgame3" to="." method="_on_cancel_ggame_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/returnButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/returnButton" to="." method="_on_return_button_pressed"]

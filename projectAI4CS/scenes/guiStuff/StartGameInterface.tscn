@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm51g8n13ca40"]
+[gd_scene load_steps=16 format=3 uid="uid://dm51g8n13ca40"]
 
 [ext_resource type="Script" uid="uid://cuac3dhc5ygid" path="res://scripts/gui/start_game_interface.gd" id="1_0vorj"]
 [ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_1jhu7"]
 [ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="1_okaa1"]
 [ext_resource type="Texture2D" uid="uid://bg4c0c8ugxs43" path="res://assets/sprites/ui/backgroundGame.png" id="1_w5qe4"]
+[ext_resource type="AudioStream" uid="uid://c1530fmcclrqk" path="res://assets/music/time_for_adventure.mp3" id="5_thx44"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8i3w"]
 texture = ExtResource("1_okaa1")
@@ -161,5 +162,12 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_0vorj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_thx44")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2771t")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_thx44")
+autoplay = true
+bus = &"Music"
+
 [connection signal="pressed" from="baseMenu/VBoxContainer/baseMenuScreen/MarginContainer/buttonContainer/topButtonContainer/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="baseMenu/VBoxContainer/baseMenuScreen/MarginContainer/buttonContainer/lowerButtonContainer2/newGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="baseMenu/VBoxContainer/baseMenuScreen/MarginContainer/buttonContainer/HBoxContainer/helpButton2" to="." method="_on_help_button_2_pressed"]
+[connection signal="pressed" from="baseMenu/VBoxContainer/baseMenuScreen/MarginContainer/buttonContainer/HBoxContainer/settingsButton" to="." method="_on_settings_button_pressed"]

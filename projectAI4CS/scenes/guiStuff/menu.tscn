@@ -213,6 +213,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [connection signal="pressed" from="popmenu/baseMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/buttonContainer/topButtonContainer/saveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="popmenu/baseMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/buttonContainer/topButtonContainer/settingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="popmenu/baseMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/buttonContainer/lowerButtonContainer2/quitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="pressed" from="popmenu/baseMenu/VBoxContainer/baseMenuScreen/NinePatchRect/MarginContainer/buttonContainer/lowerButtonContainer2/exitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="pauseIconButton/VBoxContainer/pauseButton" to="." method="_on_pause_button_pressed"]

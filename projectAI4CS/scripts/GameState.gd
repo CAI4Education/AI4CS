@@ -1,5 +1,57 @@
 extends Node
 
+########### SETTINGS GLOBALI ###########
+
+var master_volume: float = 1.0
+var fullscreen_enabled: bool = false
+
+func get_settings_path() -> String:
+	return "user://settings.save"
+
+func save_settings():
+	var data := {
+		"master_volume": master_volume,
+		"fullscreen_enabled": fullscreen_enabled
+	}
+
+	var file := FileAccess.open(get_settings_path(), FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(data))
+		file.close()
+
+func load_settings():
+	var path := get_settings_path()
+	if not FileAccess.file_exists(path):
+		return
+
+	var file := FileAccess.open(path, FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+
+	if data.has("master_volume"):
+		master_volume = data["master_volume"]
+		var bus_id = AudioServer.get_bus_index("Master")
+
+		if master_volume <= 0.0:
+			AudioServer.set_bus_mute(bus_id, true)
+		else:
+			AudioServer.set_bus_mute(bus_id, false)
+			AudioServer.set_bus_volume_db(
+				bus_id,
+				linear_to_db(max(master_volume, 0.001))
+			)
+
+
+	if data.has("fullscreen_enabled"):
+		fullscreen_enabled = data["fullscreen_enabled"]
+		DisplayServer.window_set_mode(
+			DisplayServer.WINDOW_MODE_FULLSCREEN
+			if fullscreen_enabled
+			else DisplayServer.WINDOW_MODE_WINDOWED
+		)
+
+
+########### FILE DI GIOCO ###########
 var player_position: Vector2
 var current_level: String = "0"
 
@@ -10,7 +62,6 @@ var current_save_slot: int = 1
 
 func get_save_path() -> String:
 	return "user://savegame_%d.save" % current_save_slot
-
 
 func save_game():
 	var data := {
