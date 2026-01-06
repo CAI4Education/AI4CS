@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyrpt4siywthj"]
+
+[ext_resource type="Script" uid="uid://bd5hihwv01jxn" path="res://scripts/gui/help_scene.gd" id="1_nqtdn"]
+[ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="1_wny1a"]
+[ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_6x4b3"]
+[ext_resource type="FontFile" uid="uid://crk5bhesu6ahf" path="res://assets/fonts/PixelOperator8.ttf" id="4_wp5tu"]
+[ext_resource type="AudioStream" uid="uid://b01bollqc8xog" path="res://assets/music/music.mp3" id="5_vaqp2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wny1a"]
+texture = ExtResource("1_wny1a")
+region_rect = Rect2(837, 157, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6x4b3"]
+texture = ExtResource("1_wny1a")
+region_rect = Rect2(869, 159, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqtdn"]
+texture = ExtResource("1_wny1a")
+region_rect = Rect2(869, 159, 22, 22)
+
+[node name="HelpScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nqtdn")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(370, 160)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_wny1a")
+region_rect = Rect2(107, 148, 26, 26)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6x4b3")
+theme_override_font_sizes/font_size = 25
+text = "How the game works"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TextEdit" type="TextEdit" parent="NinePatchRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_wp5tu")
+text = "You need to complete all thechallenges in order to ... [COMPLETE HERE]"
+editable = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="returnButton" type="Button" parent="NinePatchRect/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_wp5tu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wny1a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6x4b3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqtdn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vaqp2")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/MarginContainer2/returnButton" to="." method="_on_return_button_pressed"]
