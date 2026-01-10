@@ -1,0 +1,213 @@
+[gd_scene load_steps=22 format=3 uid="uid://dbb2poigd5up7"]
+
+[ext_resource type="Texture2D" uid="uid://b321vvvjl14wf" path="res://assets/sprites/enemies/Golem.png" id="1_3b535"]
+[ext_resource type="Script" uid="uid://cdi0g6u3iwtt" path="res://scripts/world/enemies/golem_enemy.gd" id="1_rs2pk"]
+[ext_resource type="Script" uid="uid://vq8b66fbpxri" path="res://scripts/player/stats.gd" id="2_jnf2s"]
+[ext_resource type="Texture2D" uid="uid://crshdnd1rjx7q" path="res://assets/sprites/shadows/large_shadow.png" id="2_rs2pk"]
+[ext_resource type="Script" uid="uid://hq3e44xny6kn" path="res://scripts/damage_boxes/hurtbox.gd" id="4_48xm0"]
+
+[sub_resource type="Resource" id="Resource_o5mdc"]
+script = ExtResource("2_jnf2s")
+metadata/_custom_type_script = "uid://vq8b66fbpxri"
+
+[sub_resource type="Animation" id="Animation_48xm0"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_jnf2s"]
+resource_name = "Stop"
+length = 1.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1, 1.1, 1.2, 1.3000001, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+}
+
+[sub_resource type="Animation" id="Animation_o5mdc"]
+resource_name = "hit"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999, 1.1981152),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5mdc"]
+_data = {
+&"RESET": SubResource("Animation_48xm0"),
+&"Walk": SubResource("Animation_jnf2s"),
+&"hit": SubResource("Animation_o5mdc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48xm0"]
+radius = 10.198039
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jnf2s"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq6v7"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o5mdc"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dq6v7"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ottg1"]
+advance_mode = 2
+advance_expression = "can_see_player()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7qpcb"]
+advance_mode = 2
+advance_expression = "not can_see_player()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u3xlq"]
+advance_mode = 2
+advance_expression = "velocity == Vector2(0,0)"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_u3xlq"]
+states/ChaseState/node = SubResource("AnimationNodeAnimation_jnf2s")
+states/ChaseState/position = Vector2(381, 188)
+states/HitState/node = SubResource("AnimationNodeAnimation_dq6v7")
+states/HitState/position = Vector2(581, 100)
+states/IdleState/node = SubResource("AnimationNodeAnimation_o5mdc")
+states/IdleState/position = Vector2(381, 100)
+transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_dq6v7"), "IdleState", "ChaseState", SubResource("AnimationNodeStateMachineTransition_ottg1"), "ChaseState", "IdleState", SubResource("AnimationNodeStateMachineTransition_7qpcb"), "HitState", "IdleState", SubResource("AnimationNodeStateMachineTransition_u3xlq")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cvi48"]
+graph_offset = Vector2(-238.29292, 0)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_u3xlq")
+nodes/StateMachine/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvi48"]
+
+[node name="GolemEnemy" type="CharacterBody2D"]
+position = Vector2(0, -21)
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_rs2pk")
+stats = SubResource("Resource_o5mdc")
+
+[node name="Visuals" type="Node2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_3b535")
+hframes = 5
+vframes = 6
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="Visuals"]
+show_behind_parent = true
+position = Vector2(0, 196.37999)
+scale = Vector2(6.875, 4.6379986)
+texture = ExtResource("2_rs2pk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o5mdc")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 8)
+shape = SubResource("CircleShape2D_48xm0")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_cvi48")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 21)
+target_position = Vector2(32, 0)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 21)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("4_48xm0")
+metadata/_custom_type_script = "uid://hq3e44xny6kn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, -13)
+shape = SubResource("CircleShape2D_cvi48")
