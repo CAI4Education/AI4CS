@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bcjosjn0mg65v"]
+
+[ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_vb3rp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvq3v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juvgi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc4ej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxhhp"]
+bg_color = Color(1, 1, 1, 0)
+
+[resource]
+default_font = ExtResource("1_vb3rp")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_hvq3v")
+TextEdit/colors/background_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_color = Color(1, 1, 1, 1)
+TextEdit/colors/font_readonly_color = Color(1, 1, 1, 1)
+TextEdit/font_sizes/font_size = 12
+TextEdit/styles/normal = SubResource("StyleBoxFlat_juvgi")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_gc4ej")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_hxhhp")
