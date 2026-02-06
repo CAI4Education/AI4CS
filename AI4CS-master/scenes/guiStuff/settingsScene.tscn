@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://dytcjpv8awyx7"]
+
+[ext_resource type="Script" uid="uid://bqckjfnudo0s8" path="res://scripts/gui/settings_scene.gd" id="1_ttou8"]
+[ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="2_86fih"]
+[ext_resource type="FontFile" uid="uid://bbxfvrsyh1wu6" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_jmgfx"]
+[ext_resource type="Script" uid="uid://spnkrbgdqtbe" path="res://scripts/music/music_control.gd" id="4_86fih"]
+[ext_resource type="FontFile" uid="uid://crk5bhesu6ahf" path="res://assets/fonts/PixelOperator8.ttf" id="4_mk6yr"]
+[ext_resource type="Script" uid="uid://0oul5fcfdmt7" path="res://scripts/gui/full_screen_control.gd" id="6_mk6yr"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ttou8"]
+color = Color(0.76862746, 0.6039216, 0.42352942, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_86fih"]
+color = Color(0.5771605, 0.42233473, 0.28502533, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tao43"]
+texture = ExtResource("2_86fih")
+region_rect = Rect2(837, 157, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxdpj"]
+texture = ExtResource("2_86fih")
+region_rect = Rect2(869, 159, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01jvs"]
+texture = ExtResource("2_86fih")
+region_rect = Rect2(869, 159, 22, 22)
+
+[node name="SettingsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ttou8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(370, 160)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_86fih")
+region_rect = Rect2(107, 148, 26, 26)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jmgfx")
+theme_override_font_sizes/font_size = 25
+text = "Options"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 230
+theme_override_constants/margin_top = 230
+theme_override_constants/margin_right = 230
+theme_override_constants/margin_bottom = 230
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_mk6yr")
+text = "AUDIO      "
+
+[node name="musicControl" type="HSlider" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/slider = SubResource("StyleBoxLine_ttou8")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_86fih")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_86fih")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_86fih")
+audioBusName = "Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_mk6yr")
+text = "SCREEN   "
+
+[node name="FullScreenControl" type="CheckButton" parent="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("6_mk6yr")
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="returnButton" type="Button" parent="NinePatchRect/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_mk6yr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tao43")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rxdpj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01jvs")
+
+[connection signal="value_changed" from="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/musicControl" to="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/musicControl" method="_on_value_changed"]
+[connection signal="toggled" from="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/FullScreenControl" to="NinePatchRect/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/FullScreenControl" method="_on_toggled"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/MarginContainer2/returnButton" to="." method="_on_return_button_pressed"]
