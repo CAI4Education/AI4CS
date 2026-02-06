@@ -1,0 +1,3 @@
+In this challenge you have to use the command cat!
+Cat is used to read the content of a file, like this: cat my_file.txt
+But how do you find the specified file? We'll see this in another challenge, now write cd ctf_workspace and then cat flag.txt
