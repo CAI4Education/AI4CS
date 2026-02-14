@@ -1,0 +1,1 @@
+Ok, but I want to execute a file, how can I do it? Eheh you are running to fast, we need to introduce you some other basic stuff and we'll get to that shortly. Just know how to run executable in Linux, for the purpose of future challenges, you need to go to the file folder to run and write ./file_name (remember the dot before the slash).

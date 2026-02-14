@@ -1,0 +1,5 @@
+Oh no! You cat nemesis steal you bone from the matrix, you need to get all the fragments back!
+But you need to save the bone on the cat's same game!
+You will need to use a command to express disapproval of cats... The cat command!
+Cat is used to read the content of a file, like this: cat my_file.txt
+But how do you find the specified file? We'll see this in another challenge, now write cd ctf_workspace and then cat flag.txt
