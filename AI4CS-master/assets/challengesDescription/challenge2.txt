@@ -1,3 +1,0 @@
-Ok, but if I hadn't told you the name of the flag, how would you have read the file?
-The ls command comes to our rescue!
-Just write *ls* inside the terminal and let the magic happen
