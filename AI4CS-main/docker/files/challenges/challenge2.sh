@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "fl4g{l5_15_1mp0r74n7}" > fl4g{l5_15_1mp0r74n7}
-echo "Something interesting in this file" > file1.txt
-echo "ls is easy and super efficient" > lsjusttop.txt
-#chmod 600 flag.txt
