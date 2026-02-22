@@ -1,0 +1,9 @@
+Welcome to the Scrapyard, the domain of the Junk Golem!
+This area is filled with useless data and temporary files that are clogging the system.
+Your mission is to clean up the mess and secure the vital blueprints.
+
+1. The workspace is full of '.tmp' files. Destroy them all.
+2. The system needs a status update. Create a file named 'report.txt' containing the word: CLEAN
+3. The 'blueprint.doc' is exposed. Move it safely into the 'vault' folder.
+
+Once the area is tidy, run the verification script to defeat the Golem!

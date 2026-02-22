@@ -1,0 +1,11 @@
+You have reached the Deep Archive. The Librarian Bot blocks your path!
+To proceed, you must restore the corrupted file system structure.
+The ancient data is hidden deep within a maze of directories.
+
+1. Create a 'backup' directory to save your progress.
+2. Copy the 'system.conf' file into your new backup folder.
+3. Find the hidden 'artifact.dat' file (it's buried deep in the sector folders).
+4. Create a symbolic link named 'relic_link' in the main folder pointing to that artifact.
+5. The 'repair_system.sh' script is locked. Make it executable and run it.
+
+Structure is key. Chaos will not be tolerated.

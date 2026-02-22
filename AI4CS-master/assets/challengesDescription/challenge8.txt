@@ -1,0 +1,2 @@
+Files are all around you. Like candy wrappers, there'll eventually be too many of them. In this level, we'll learn to clean up!
+Delete the file my_first_file and get the bone fragment!

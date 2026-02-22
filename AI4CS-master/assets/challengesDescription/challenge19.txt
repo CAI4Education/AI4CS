@@ -1,0 +1,11 @@
+WARNING: You have entered the System Core. The Logic Gatekeeper awaits!
+This is the final test. Brute force will not work here; you must analyze the data streams.
+You need to find the override password to unlock the Core.
+
+1. Analyze 'server.log'. Thousands of lines, but only one contains the string "CRITICAL_KEY". Find it.
+2. Compare 'config_v1.txt' and 'config_v2.txt'. The password is hidden in the difference between them.
+3. The password found in step 2 is encoded! Decode it using base64 logic.
+4. Save the decoded password into a file named 'password.txt'.
+5. Run './unlock_core.sh' to finish the game.
+
+Trust your eyes, but trust the diff even more.

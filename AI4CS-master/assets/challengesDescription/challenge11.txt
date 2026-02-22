@@ -1,0 +1,1 @@
+If you have green thumb and want to increase the size of the linux tree you don't need to water your pc, but instead you can create new directories with mkdir command

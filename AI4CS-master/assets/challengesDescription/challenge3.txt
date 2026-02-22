@@ -1,0 +1,17 @@
+To move around your computer using the terminal, the cd command (which stands for Change Directory) is your best friend. It’s the digital equivalent of double-clicking a folder to open it or clicking the "back" button.
+
+How to use it
+Using it is simple: just type cd followed by the name of the folder you want to enter.
+
+To go inside: cd my_folder
+
+To go back one level: cd ..
+
+Absolute vs. Relative Paths
+When you tell the computer where to go, you can give directions in two ways:
+
+Absolute Path: Think of this as a GPS coordinate or a full mailing address. It starts from the very beginning of your hard drive (like C:\Users\Name\Desktop). It works no matter where you are currently "standing" because it provides the complete map.
+
+Relative Path: Think of this as local directions, like "turn left at the next light." It only works based on your current location. If you are already on the Desktop, you don't need the full address; you just type cd my_folder. It’s faster and more efficient for quick jumps.
+
+In short: Use Absolute when you need to jump to a completely different part of your computer, and Relative when you are navigating folders right in front of you.
