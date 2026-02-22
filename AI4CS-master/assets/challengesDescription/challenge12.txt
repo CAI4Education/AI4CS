@@ -1,6 +1,0 @@
-So now we know how to list, read, and create files. But how do we find them? We use the find command!
-
-The find command takes optional arguments describing the search criteria and the search location. If you don't specify a search criteria, find matches every file. If you don't specify a search location, find uses the current working directory (.).
-
-Before using the find command, this time you need to run ./checker.sh as the first thing to do
-

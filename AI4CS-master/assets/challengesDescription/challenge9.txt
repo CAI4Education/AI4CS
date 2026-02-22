@@ -1,2 +1,0 @@
-You can also move any file to any directory.
-Try to steal the treasure from the enemy base using the mv command :-o

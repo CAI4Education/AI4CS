@@ -1,8 +1,0 @@
-Welcome to you first miniboss!
-This golem is harder to defeat, you'll need to use all the commands you learned.
-The Golem has 3 vaults, start from the first one to gain the necessary hint to crack the following one!
-
-In the first vault the vault_key_? number is lost, retrieve it to get the correct code in the second vault.
-Once you get the secret code crack the flag in the last vault.
-
-Good luck!

@@ -1,2 +1,0 @@
-what do you say? Do you need to mark somewhere how many enemies you've shot down so far? Nothing easier, just use the touch command to create the file with the name you want! For now create a file called my_first_file
-As soon as you touche the new file, run the ./checker.sh script to get the bone fragment!
