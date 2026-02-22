@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bmenpldkhh35i"]
+
+[ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="1_lk6fo"]
+[ext_resource type="Texture2D" uid="uid://61uyoswfn8v8" path="res://assets/sprites/comics/newAdventure.png" id="2_uuq44"]
+
+[node name="IntroComic" type="Control" unique_id=460697230]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=346527429]
+custom_minimum_size = Vector2(370, 160)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_lk6fo")
+region_rect = Rect2(107, 148, 26, 26)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect" unique_id=2108096420]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 5.0000014
+offset_right = 1213.0
+offset_bottom = 990.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_uuq44")

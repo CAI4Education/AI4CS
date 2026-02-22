@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c2hbtojjyeglr"]
+
+[ext_resource type="Texture2D" uid="uid://d2ruo3rtovaad" path="res://assets/sprites/ui/menu.png" id="1_kju8l"]
+[ext_resource type="Texture2D" uid="uid://dwbghc4esnunk" path="res://assets/sprites/comics/backIn.png" id="2_fr52q"]
+
+[node name="DiedComic" type="CanvasLayer" unique_id=271188360]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1192942219]
+custom_minimum_size = Vector2(370, 160)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_kju8l")
+region_rect = Rect2(107, 148, 26, 26)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect" unique_id=1205919392]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 26.0
+offset_right = 1323.0
+offset_bottom = 1210.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fr52q")
